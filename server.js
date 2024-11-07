@@ -41,6 +41,7 @@ new MongoClient(url).connect().then((client)=>{
   console.log(err)
 })
 
+
 // login
 app.get('/', (req, res) => {
   res.render('login.ejs')
@@ -55,20 +56,31 @@ app.post('/join', async (req, res) => {
         let KoRegex = /^[가-힣]+$/;
         let EngNumRegex =  /^[A-Za-z0-9]+$/;
 
-        if(!KoRegex.test(req.body.userName)) {
-            return res.send("<script>alert('유저이름은 한글만 입력 가능합니다.'); history.back();</script>");
-        }else if(!EngNumRegex.test(req.body.userId)){
-            return res.send("<script>alert('아이디는 영어와 숫자만 입력 가능합니다.'); history.back();</script>");
+        if(!KoRegex.test(req.body.userName) || req.body.userName.length < 2) {
+            return res.send("<script>alert('유저이름은 2글자 이상의 한글만 입력 가능합니다.'); history.back();</script>");
+        }else if(!EngNumRegex.test(req.body.userId || req.body.userId.length < 4)){
+            return res.send("<script>alert('아이디는 4글자 이상의 영어와 숫자만 입력 가능합니다.'); history.back();</script>");
         }else if(req.body.userPw != req.body.userPw02) {
             return res.send("<script>alert('비밀번호가 서로 일치하지 않습니다.'); history.back();</script>");
         }else if(req.body.userPw == req.body.userPw02 && 
-            (!EngNumRegex.test(req.body.userPw) || !EngNumRegex.test(req.body.userPw02))) {
-            return res.send("<script>alert('아이디는 영어와 숫자만 입력 가능합니다.'); history.back();</script>");
+            (!EngNumRegex.test(req.body.userPw) || !EngNumRegex.test(req.body.userPw02)) 
+            || req.body.userPw.length < 4 || req.body.userPw02.length < 4) {
+            return res.send("<script>alert('비밀번호는 4글자 이상의 영어와 숫자만 입력 가능합니다.'); history.back();</script>");
         }else {
-            // 비밀번호 암호화
-            let userPw = bcrypt.hashSync(req.body.userPw, 10);
-            await db.collection('user').insertOne({userName: req.body.userName, userId: req.body.userId, userPw: userPw})
-            res.send("<script>alert('회원가입이 완료되었습니다.'); window.location = '/';</script>");
+                // 비밀번호 암호화
+                let userPw = bcrypt.hashSync(req.body.userPw, 10);
+                let idCheck = await db.collection('user').findOne({userId : req.body.userId});
+                
+                if(idCheck) {
+                    return res.send("<script>alert('이미 등록된 아이디입니다.'); history.back();</script>");
+                }else {
+                    await db.collection('user').insertOne({
+                        userName: req.body.userName, 
+                        userId: req.body.userId, 
+                        userPw: userPw
+                    })
+                    res.send("<script>alert('회원가입이 완료되었습니다.'); window.location = '/';</script>");
+                }
         }
     } catch(e){
         console.log("err" + e);

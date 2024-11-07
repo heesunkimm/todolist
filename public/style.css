@@ -9,6 +9,8 @@
 
 .join_sec form label input {width: 74%; font-size: 16px;}
 .login_sec form label input {width: 84%; font-size: 16px;}
+.login_sec form .join_box {margin-top: 10px; text-align: right;}
+.login_sec form .join_box a {border-bottom: 1px solid #999; color: #666; font-size: 14px;}
 
 /* header */
 header {max-width: 1140px; margin: 0 auto; padding: 40px 0;}
