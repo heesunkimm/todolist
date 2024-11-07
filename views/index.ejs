@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<link rel="stylesheet" type="text/css" href="/reset.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- fullcalendar CDN -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+    <!-- fullcalendar 언어 CDN -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+</head>
+<body>
+    <%- include('header.ejs') %>
+    
+    <section class="todo_sec content">
+        <div class="inner_sec">
+            <div>
+                <!-- fullcalendar api -->
+                <div id="calendar" class="todo_cal"></div>
+    
+                <div class="todo_box">
+                    <p class="box_tit">일정 추가</p>
+                    <p class="todo_date"></p>
+                    <input type="hidden" name="todoDate" value="">
+                    <div class="todo_txt">
+                        <label>
+                            일정 제목<input type="text" name="todoTitle">
+                        </label>
+                        <label>
+                            일정 설명<textarea name="todoDesc"></textarea>
+                        </label>
+                    </div>
+                    <button>일정추가</button>
+                </div>
+            </div>
+            <ul class="todo_list">
+                <li>
+                    <ul class="todo_detail">
+                        <li class="todo_tit">일정명</li>
+                        <li class="todo_desc">일정설명</li>
+                    </ul>
+                    <button type="button">일정삭제</button>
+                </li>
+                <li>
+                    <ul class="todo_detail">
+                        <li class="todo_tit">일정명</li>
+                        <li class="todo_desc">일정설명</li>
+                    </ul>
+                    <button type="button">일정삭제</button>
+                </li>
+            </ul>
+        </div>
+    </section>
+</body>
+<script>
+    $(document).ready(function () {
+        let calendarEl = document.getElementById('calendar');
+        let calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'ko',
+            dateClick: function (info) {
+                let selectedDate = info.date;
+                let selectedEl = info.dayEl;
+                let formattedDate = selectedDate.toLocaleDateString("ko-KR");
+                
+                $('.fc-daygrid-day').css('background', '');
+                
+                $('.todo_date').text("TodoDate: " + formattedDate);
+                $('input[name="todoDate"]').val(formattedDate);
+                $(selectedEl).css('background', '#FFC6C6');
+                $('.todo_box input, .todo_box textarea').val("");
+            }
+        });
+
+        calendar.render();
+    });
+</script>
+</html>

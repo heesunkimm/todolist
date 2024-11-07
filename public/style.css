@@ -1,0 +1,54 @@
+/* 회원가입, 로그인 */
+.user_content {display: grid; place-items: center; min-height: 100dvh;}
+.user_content form {width: 300px; display: flex; flex-direction: column; border: 1px solid #ccc; border-radius: 4px; padding: 20px;}
+.user_content p {margin-bottom: 20px; font-size: 20px;}
+.user_content form label + label {margin-top: 10px;}
+.user_content form button {margin-top: 16px; border: 1px solid #ccc; border-radius: 4px; padding: 2px 4px; font-size: 16px;}
+.user_content form label {display: flex; align-items: center; justify-content: space-between; width: 100%; font-size: 18px;}
+.user_content form label input {font-size: 16px;}
+
+.join_sec form label input {width: 74%; font-size: 16px;}
+.login_sec form label input {width: 84%; font-size: 16px;}
+
+/* header */
+header {max-width: 1140px; margin: 0 auto; padding: 40px 0;}
+header .logo_box p {font-size: 32px; font-weight: 700; text-align: center;}
+header .todo_nav {margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 40px;}
+header .todo_nav li a {font-size: 24px;}
+header .todo_nav li a:hover {color: #F0A8D0;}
+
+/* 공통 CSS */
+.content {max-width: 1140px; margin: 0 auto;}
+.content button {border: 1px solid #ccc; border-radius: 4px; padding: 2px 4px;}
+.todo_sec .inner_sec > div {width: 860px; display: flex; align-items: flex-end; justify-content: space-between; margin: 0 auto;}
+.todo_sec .inner_sec .todo_cal {width: 500px; height: 500px;}
+
+/* index */
+.todo_sec .inner_sec .todo_box {width: 300px; border: 1px solid #ccc; border-radius: 4px; padding: 10px; text-align: center; color: #555;}
+.todo_sec .inner_sec .todo_box .box_tit {font-size: 24px;}
+.todo_sec .inner_sec .todo_box .todo_date {margin-top: 10px; font-size: 16px;}
+.todo_sec .inner_sec .todo_box .todo_txt {margin-top: 16px; display: flex; flex-wrap: wrap; flex-direction: column; align-items: center;}
+.todo_sec .inner_sec .todo_box .todo_txt label + label {margin-top: 10px;}
+.todo_sec .inner_sec .todo_box .todo_txt label {width: 100%; font-size: 20px; text-align: left;}
+.todo_sec .inner_sec .todo_box .todo_txt input, 
+.todo_sec .inner_sec .todo_box .todo_txt textarea {margin-top: 6px; width: 292px; font-size: 16px;}
+.todo_sec .inner_sec .todo_box button {margin-top: 16px; font-size: 16px;}
+
+.todo_sec .inner_sec .todo_list {width: 860px; margin: 30px auto 0;}
+.todo_sec .inner_sec .todo_list > li {display: flex; align-items: center; justify-content: space-between; border-radius: 10px; font-size: 16px; padding: 8px 10px; color: #333;}
+.todo_sec .inner_sec .todo_list > li:nth-child(odd) {background-color: rgb(255, 235, 212, .5);}
+.todo_sec .inner_sec .todo_list > li:nth-child(even) {background-color: rgb(247, 181, 202, .5);}
+.todo_sec .inner_sec .todo_list > li button {font-size: 14px;}
+.todo_sec .inner_sec .todo_list > li + li {margin-top: 10px;}
+
+/* diary */
+.diary_sec .inner_sec > form {width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; border: 1px solid #ccc; border-radius: 6px; padding: 20px;}
+.diary_sec .inner_sec > form p {font-size: 24px;}
+.diary_sec .inner_sec > form label {width: 100%; margin-top: 16px;}
+.diary_sec .inner_sec > form label input[name='diaryDate'] {border: none;}
+.diary_sec .inner_sec > form label input, 
+.diary_sec .inner_sec > form label textarea {width: 90%; margin-left: 10px; font-size: 16px;}
+.diary_sec .inner_sec > form label textarea {height: 300px;}
+.diary_sec .inner_sec > form button {margin-top: 16px; font-size: 18px;}
+
+/* mypage */

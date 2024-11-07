@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<link rel="stylesheet" type="text/css" href="/reset.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <%- include('header.ejs') %>
+    <section class="diary_sec content">
+        <div class="inner_sec">
+            <form action="" method="">
+                <p>Today Diary</p>
+                <label>
+                    오늘날짜: <input type="text" name="diaryDate" readonly>
+                </label>
+                <label>
+                    제목
+                    <input type="text" name="diaryTitle" maxlength="16" placeholder="최대 16자 작성가능" required>
+                </label>
+                <label>
+                    내용
+                    <textarea name="diaryTitle" maxlength="200" placeholder="최대 200자 작성가능" required></textarea>
+                </label>
+                <button type="submit">일기작성</button>
+            </form>
+        </div>
+    </section>
+</body>
+</script>
+</html>

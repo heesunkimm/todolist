@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+	<link rel="stylesheet" type="text/css" href="/reset.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <%- include('header.ejs') %>
+    <section class="setting_sec content">
+        <div class="inner_sec">
+            <form action="" method="">
+                <p>My Page</p>
+                <label>
+                    이름 <input type="text" name="userName" readonly>
+                </label>
+                <label>
+                    아이디 <input type="text" name="userId" readonly>
+                </label>
+
+                <label>
+                    비밀번호
+                    <input type="password" name="diaryTitle" maxlength="16" placeholder="최대 16자 작성가능">
+                </label>
+                <button type="submit">정보수정</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
